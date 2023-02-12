@@ -12,9 +12,7 @@ export const SharedLayout = () => {
           Filmoteka
         </Logo>
         <nav>
-          <Link to="/" end>
-            Home
-          </Link>
+          <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
