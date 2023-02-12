@@ -16,7 +16,7 @@ const fetchMoviesTrending = async () => {
 };
 console.log(response);
 
-fetchMoviesTrending().then(responce => lonsole.log(responce));
+fetchMoviesTrending().then(responce => console.log(responce));
 
 const fetchSearchMovies = async () => {};
 
