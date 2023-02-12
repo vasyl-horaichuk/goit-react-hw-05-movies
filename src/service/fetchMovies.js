@@ -17,11 +17,11 @@ export const fetchMoviesTrending = async () => {
   return responce.data;
 };
 
-export const fetchSearchMovies = async qeury => {
+export const fetchSearchMovies = async query => {
   const responce = await axios.get(
-    `/search/movie${params.search}&query=${qeury}`
+    `/search/movie${params.search}&query=${query}`
   );
-  return responce.results;
+  return responce.data.results;
 };
 
 export const fetchMovieDetails = async id => {
