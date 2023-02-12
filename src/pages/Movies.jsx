@@ -1,3 +1,13 @@
 export const Movies = () => {
-  return <h1>HELLO MOVIES PAGE</h1>;
+  return (
+    <>
+      <h1>TITLE</h1>
+      <form action="">
+        <label htmlFor="">
+          <input type="text" />
+        </label>
+      </form>
+      <button type="submit">submit</button>
+    </>
+  );
 };
