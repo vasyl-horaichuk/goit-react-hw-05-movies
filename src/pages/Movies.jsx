@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { fetchSearchMovies } from 'service/fetchMovies';
+import { fetchSearchMovies } from '../service/fetchMovies';
+import { MoviesList } from 'components/Movies/MoviesList';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
-  // const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const searchQuery = searchParams.get('query');
-    console.log(searchQuery);
+
     if (!searchQuery) {
       return;
     }
 
-    fetchSearchMovies(searchQuery).then(data => {
-      console.log(data);
-    });
+    fetchSearchMovies('avatar')
+      .then(setMovies)
+      .catch(error => console.error(error));
   }, [searchParams]);
 
   const handleChange = e => {
@@ -44,6 +45,7 @@ export const Movies = () => {
         </label>
         <button type="submit">submit</button>
       </form>
+      <MoviesList movies={movies} />
     </>
   );
 };

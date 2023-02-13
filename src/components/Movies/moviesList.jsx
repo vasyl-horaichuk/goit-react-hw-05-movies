@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const MoviesList = ({ movies }) => {
   return (
     <>
       <ul>
         {movies.map(({ id, title }) => (
-          <li>
+          <li key={id}>
             <Link to={`${id}`}>
               <p>{title}</p>
             </Link>
@@ -14,4 +15,13 @@ export const MoviesList = ({ movies }) => {
       </ul>
     </>
   );
+};
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };

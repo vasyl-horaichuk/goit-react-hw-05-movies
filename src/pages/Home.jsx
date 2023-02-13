@@ -1,6 +1,6 @@
 import { fetchMoviesTrending } from '../service/fetchMovies';
 import { useEffect, useState } from 'react';
-import { MoviesList } from 'components/Movies/moviesList';
+import { MoviesList } from 'components/Movies/MoviesList';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
