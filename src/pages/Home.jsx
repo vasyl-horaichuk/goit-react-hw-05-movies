@@ -1,5 +1,5 @@
-import { fetchMoviesTrending } from '../service/fetchMovies';
 import { useEffect, useState } from 'react';
+import { fetchMoviesTrending } from '../service/fetchMovies';
 import { MoviesList } from 'components/Movies/MoviesList';
 
 export const Home = () => {
@@ -10,6 +10,7 @@ export const Home = () => {
       try {
         const data = await fetchMoviesTrending();
         setMovies(data.results);
+        console.log(data);
       } catch (error) {
         console.log(error.message);
       }

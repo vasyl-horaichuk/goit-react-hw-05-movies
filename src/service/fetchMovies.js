@@ -13,7 +13,7 @@ axios.defaults.params = {
 };
 
 export const fetchMoviesTrending = async () => {
-  const responce = await axios.get(`trending/all/day`);
+  const responce = await axios.get(`trending/movie/day?`);
   return responce.data;
 };
 
@@ -25,7 +25,7 @@ export const fetchSearchMovies = async query => {
 };
 
 export const fetchMovieDetails = async id => {
-  const responce = await axios.get(`/movie/${id}?${params.language}`);
+  const responce = await axios.get(`movie/${id}?${params.language}`);
   return responce.data;
 };
 

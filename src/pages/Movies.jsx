@@ -20,8 +20,8 @@ export const Movies = () => {
       .catch(error => console.error(error));
   }, [searchParams]);
 
-  const handleChange = e => {
-    setQuery(e.target.value);
+  const handleChange = ({ target: { value } }) => {
+    setQuery(value);
   };
 
   const handleSubmit = e => {

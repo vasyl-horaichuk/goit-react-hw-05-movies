@@ -1,12 +1,45 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { fetchMovieDetails } from 'service/fetchMovies';
+import { BASE_IMG_URL } from 'service/constant';
 
 export const MoviesDetails = () => {
-  const [id] = useParams();
-  console.log(id);
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
+  const [movieData, setMovieData] = useState(null);
+  const { movieId } = useParams();
 
-  return <h1>Movies Details</h1>;
+  useEffect(() => {
+    const fetchMoviesById = async () => {
+      try {
+        const results = await fetchMovieDetails(movieId);
+        setMovieData(results);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchMoviesById();
+  }, [movieId]);
+
+  if (!movieData) {
+    return (
+      <div>
+        <h1>Loding data...</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+      }}
+    >
+      <h1>Movies Details</h1>
+      <button>go back</button>
+      <img src={BASE_IMG_URL + movieData.poster_path} alt="" width="200" />
+      <Link to="/cast">Cast</Link>
+      <Link to="/reviews">Reviews</Link>
+    </div>
+  );
 };
