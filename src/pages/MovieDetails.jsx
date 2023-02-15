@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import {
+  useParams,
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { fetchMovieDetails } from 'service/fetchMovies';
 import { BASE_IMG_URL } from 'service/constant';
 
 export const MoviesDetails = () => {
   const [movieData, setMovieData] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -18,6 +26,10 @@ export const MoviesDetails = () => {
     };
     fetchMoviesById();
   }, [movieId]);
+
+  const handelGoBack = () => {
+    navigate();
+  };
 
   if (!movieData) {
     return (
@@ -38,8 +50,9 @@ export const MoviesDetails = () => {
       <h1>Movies Details</h1>
       <button>go back</button>
       <img src={BASE_IMG_URL + movieData.poster_path} alt="" width="200" />
-      <Link to="/cast">Cast</Link>
-      <Link to="/reviews">Reviews</Link>
+      <Link to="cast">Cast</Link>
+      <Link to="reviews">Reviews</Link>
+      <Outlet />
     </div>
   );
 };
