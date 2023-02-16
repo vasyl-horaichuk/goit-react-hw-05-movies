@@ -4,19 +4,29 @@ import { MoviesList } from 'components/Movies/MoviesList';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const data = await fetchMoviesTrending();
         setMovies(data.results);
-        console.log(data.results);
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchMovies();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loding...</h1>
+      </div>
+    );
+  }
 
   return (
     <main>
