@@ -36,5 +36,5 @@ export const fetchMovieCredits = async id => {
 
 export const fetchMovieReviews = async id => {
   const responce = await axios.get(`movie/${id}/credits?${params.language}`);
-  return responce.results;
+  return responce.data.results;
 };
