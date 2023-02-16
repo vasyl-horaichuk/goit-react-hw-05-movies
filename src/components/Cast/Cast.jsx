@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieCredits } from '../../service/fetchMovies';
+import { fetchMovieCredits } from 'service/fetchMovies';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -8,13 +8,12 @@ export const Cast = () => {
 
   useEffect(() => {
     fetchMovieCredits(movieId).then(setCast);
-    console.log(movieId);
   }, [movieId]);
   return (
     <div>
       <h1>Cast</h1>
-      {cast.map(actor => (
-        <li key={actor.id}>{actor.name}</li>
+      {cast.map(({ id, name }) => (
+        <li key={id}>{name}</li>
       ))}
     </div>
   );

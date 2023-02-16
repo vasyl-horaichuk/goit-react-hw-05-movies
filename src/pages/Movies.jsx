@@ -15,9 +15,10 @@ export const Movies = () => {
       return;
     }
 
-    fetchSearchMovies('avatar')
+    fetchSearchMovies(searchQuery)
       .then(setMovies)
-      .catch(error => console.error(error));
+      .catch(error => console.error(error))
+      .finally(setQuery(searchQuery));
   }, [searchParams]);
 
   const handleChange = ({ target: { value } }) => {
