@@ -28,7 +28,8 @@ export const MoviesDetails = () => {
   }, [movieId]);
 
   const handelGoBack = () => {
-    navigate();
+    // navigate();
+    console.log(location);
   };
 
   if (!movieData) {
@@ -48,7 +49,7 @@ export const MoviesDetails = () => {
       }}
     >
       <h1>Movies Details</h1>
-      <button>go back</button>
+      <button onClick={handelGoBack}>go back</button>
       <img src={BASE_IMG_URL + movieData.poster_path} alt="" width="200" />
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>

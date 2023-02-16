@@ -10,7 +10,7 @@ export const Home = () => {
       try {
         const data = await fetchMoviesTrending();
         setMovies(data.results);
-        console.log(data);
+        console.log(data.results);
       } catch (error) {
         console.log(error.message);
       }
