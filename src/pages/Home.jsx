@@ -23,7 +23,7 @@ const Home = () => {
   if (isLoading) {
     return (
       <div>
-        <h1>Loding...</h1>
+        <h1>Loding....</h1>
       </div>
     );
   }
