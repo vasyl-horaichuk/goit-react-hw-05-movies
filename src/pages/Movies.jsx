@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchSearchMovies } from '../service/fetchMovies';
-import { MoviesList } from '../components/Movies/MoviesList';
+import { MoviesList } from 'components/Movies/MoviesList';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
