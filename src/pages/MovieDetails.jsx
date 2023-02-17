@@ -7,8 +7,8 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
-import { fetchMovieDetails } from '../service/fetchMovies';
-import { BASE_IMG_URL } from '../service/constant';
+import { fetchMovieDetails } from 'service/fetchMovies';
+import { BASE_IMG_URL } from 'service/constant';
 
 const MoviesDetails = () => {
   const [movieData, setMovieData] = useState(null);
