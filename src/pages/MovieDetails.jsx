@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import {
   useParams,
   Link,
@@ -9,7 +10,7 @@ import {
 import { fetchMovieDetails } from 'service/fetchMovies';
 import { BASE_IMG_URL } from 'service/constant';
 
-export const MoviesDetails = () => {
+const MoviesDetails = () => {
   const [movieData, setMovieData] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -56,7 +57,11 @@ export const MoviesDetails = () => {
       <Link to="reviews" state={{ from: location.state.from }}>
         Reviews
       </Link>
-      <Outlet />
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
+
+export default MoviesDetails;

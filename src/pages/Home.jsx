@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchMoviesTrending } from '../service/fetchMovies';
 import { MoviesList } from 'components/Movies/MoviesList';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,3 +35,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;
